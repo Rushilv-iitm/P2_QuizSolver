@@ -5,7 +5,17 @@ from dotenv import load_dotenv
 import os
 from google.genai import types
 load_dotenv()
-client = genai.Client()
+import google.genai as genai
+
+def run_code(code):
+    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+
+    response = client.models.generate_content(
+        model="gemini-1.5-flash",
+        contents=f"Execute this code and return output:\n{code}"
+    )
+    return response.text
+
 
 def strip_code_fences(code: str) -> str:
     code = code.strip()
@@ -70,4 +80,5 @@ def run_code(code: str) -> dict:
             "stdout": "",
             "stderr": str(e),
             "return_code": -1
+
         }
