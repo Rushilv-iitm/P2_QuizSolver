@@ -12,7 +12,7 @@ def analyze_code_with_gemini(code: str) -> str:
     """
     import google.genai as genai
 
-    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+    client = genai.Client(api_key=os.getenv("eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIzZjIwMDAwNjBAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9.mHCNEHZrNcRnnVe75UAbJ8r22JkT8hs9wSCTzYZgZ4M"))
 
     response = client.models.generate_content(
         model="gemini-1.5-flash",
@@ -80,3 +80,4 @@ def run_code(code: str) -> dict:
             "stderr": str(e),
             "return_code": -1
         }
+
